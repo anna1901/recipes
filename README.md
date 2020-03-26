@@ -1,24 +1,36 @@
-# README
+# Recipes App
+> This is a simple Recipes App, which is a place for storing and looking for recipes. This app was created by me to practice my skills in Ruby on Rails.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Features](#features)
+* [Status](#status)
 
-Things you may want to cover:
+## General info
+This is a simple Recipes App, which is a place for storing and looking for recipes.
+This app was created by me to practice my skills in Ruby on Rails.
+I also wanted to practice basics of React and jQuery.
 
-* Ruby version
+You can see the website here: https://my-awesome-recipes.herokuapp.com/
 
-* System dependencies
+## Technologies
+* Ruby - version 2.6.5
+* Rails - version 6.0.2
+* React
+* jQuery
+* Bootstrap - version ~> 4.3.1
+* Devise - version ~> 4.6
 
-* Configuration
+## Features
+Ready to use:
+* Signing Up
+* Adding recipes
 
-* Database creation
+To-do list:
+* Adding recipes to favorites
+* Pictures upload
+* Recipes ranking
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Status
+Project is: in progress. As I'll learn new things I'm going to develop this project further and further.
