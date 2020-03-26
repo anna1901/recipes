@@ -2,10 +2,10 @@ import React from "react";
 import Recipes from "./Recipes";
 import HomepageHeader from "./HomepageHeader";
 
-const Homepage = () => {
+const Homepage = (props) => {
     return(
       <div>
-        <HomepageHeader />
+        <HomepageHeader signed_in={props.signed_in}/>
         <Recipes />
       </div>
     );

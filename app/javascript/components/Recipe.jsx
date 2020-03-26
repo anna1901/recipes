@@ -68,6 +68,14 @@ class Recipe extends React.Component {
     }
     const recipeInstruction = this.addHtmlEntities(recipe.instruction);
 
+    const attachEditButton = () => {
+      if(this.props.signed_in) {
+        return(
+          <a href={`${recipe.id}/edit`} className="btn btn-info" method="patch">Edytuj</a>
+        )
+      }
+    }
+
     return (
       <div className="">
         <div className="hero position-relative d-flex align-items-center justify-content-center">
@@ -98,7 +106,7 @@ class Recipe extends React.Component {
               />
             </div>
             <div className="col-sm-12 col-lg-2">
-              <a href={`${recipe.id}/edit`} className="btn btn-info" method="patch">Edytuj</a>
+              { attachEditButton() }
             </div>
           </div>
           <a href="/recipes">Back to recipes</a>
