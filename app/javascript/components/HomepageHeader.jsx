@@ -5,7 +5,14 @@ const HomepageHeader = (props) => {
     if(signed_in) {
       return <a href="/recipes" className="btn btn-lg custom-button">View all Recipes</a>
     } else {
-      return <a href="/users/sign_up" className="btn btn-lg custom-button">Sign Up</a>
+      return(
+        <div>
+          <p className="lead">
+            Want to save recipes for later?
+          </p>
+          <a href="/users/sign_up" className="btn btn-lg custom-button">Sign Up</a>
+        </div>
+      )
     };
   }
   return(
