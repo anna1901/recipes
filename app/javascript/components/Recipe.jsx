@@ -11,11 +11,7 @@ class Recipe extends React.Component {
   }
 
   componentDidMount() {
-    const {
-      match: {
-        params: { id }
-      }
-    } = this.props;
+    const id = this.props.recipe_id;
 
     const url = `/api/v1/show/${id}`;
 
@@ -37,11 +33,7 @@ class Recipe extends React.Component {
   }
 
   deleteRecipe() {
-    const {
-      match: {
-        params: { id }
-      }
-    } = this.props;
+    const id = this.props.recipe_id;
     const url = `/api/v1/destroy/${id}`;
     const token = document.querySelector('meta[name="csrf-token"]').content;
 
@@ -58,7 +50,6 @@ class Recipe extends React.Component {
         }
         throw new Error("Network response was not ok.");
       })
-      .then(() => this.props.history.push("/recipes"))
       .catch(error => console.log(error.message));
   }
 
@@ -107,14 +98,10 @@ class Recipe extends React.Component {
               />
             </div>
             <div className="col-sm-12 col-lg-2">
-              <button type="button" className="btn btn-danger" onClick={this.deleteRecipe}>
-                Delete Recipe
-              </button>
+              <a href={`${recipe.id}/edit`} className="btn btn-info" method="patch">Edytuj</a>
             </div>
           </div>
-          <Link to="/recipes" className="btn btn-link">
-            Back to recipes
-          </Link>
+          <a href="/recipes">Back to recipes</a>
         </div>
       </div>
     );

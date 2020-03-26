@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 class Recipes extends React.Component {
   constructor(props) {
@@ -34,9 +33,7 @@ class Recipes extends React.Component {
           />
           <div className="card-body">
             <h5 className="card-title">{recipe.name}</h5>
-            <Link to={`/recipe/${recipe.id}`} className="btn custom-button">
-              View Recipe
-            </Link>
+            <a href={`/recipes/${recipe.id}`} className="btn custom-button">View Recipe</a>
           </div>
         </div>
       </div>
@@ -44,7 +41,7 @@ class Recipes extends React.Component {
     const noRecipe = (
       <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
         <h4>
-          No recipes yet. Why not <Link to="/new_recipe">create one</Link>
+          No recipes yet. Why not <a href="/new_recipe">create one</a>
         </h4>
       </div>
     );
@@ -64,16 +61,11 @@ class Recipes extends React.Component {
         <div className="py-5">
           <main className="container">
             <div className="text-right mb-3">
-              <Link to="/recipe" className="btn custom-button">
-                Create New Recipe
-              </Link>
+              <a href="/recipes/new" className="btn custom-button">Create New Recipe</a>
             </div>
             <div className="row">
               {recipes.length > 0 ? allRecipes : noRecipe}
             </div>
-            <Link to="/" className="btn btn-link">
-              Home
-            </Link>
           </main>
         </div>
       </>
