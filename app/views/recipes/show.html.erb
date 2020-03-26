@@ -1,5 +1,1 @@
-<div id="recipe-show"></div>
-<%= content_tag :div,
-  id: "recipe_id",
-  data: @recipe_id.to_json do %>
-<% end %>
+<%= react_component 'Recipe', {recipe_id: @recipe_id} %>

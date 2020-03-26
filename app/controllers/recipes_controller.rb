@@ -1,4 +1,7 @@
 class RecipesController < ApplicationController
+  def index
+  end
+
   def new
     @recipe = Recipe.new
   end
@@ -7,7 +10,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       flash[:success] = 'Recipe successfully created'
-      redirect_back(fallback_location: root_path)
+      redirect_to @recipe
     else
       render :new
     end
@@ -25,7 +28,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       flash[:success] = 'Recipe updated successfully'
-      redirect_to :recipe
+      redirect_to @recipe
     else
       render :edit
     end
