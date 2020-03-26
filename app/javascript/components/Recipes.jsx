@@ -33,7 +33,7 @@ class Recipes extends React.Component {
           />
           <div className="card-body">
             <h5 className="card-title">{recipe.name}</h5>
-            <a href={`/recipe/${recipe.id}`} className="btn custom-button">View Recipe</a>
+            <a href={`/recipes/${recipe.id}`} className="btn custom-button">View Recipe</a>
           </div>
         </div>
       </div>
