@@ -19,7 +19,7 @@ class Api::V1::RecipesController < ApplicationController
         id: recipe.id,
         name: recipe.name,
         ingredients: recipe.all_ingredients,
-        instuction: recipe.instruction,
+        instruction: recipe.instruction,
         image: recipe.image
       }
       render json: data
