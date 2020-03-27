@@ -15,7 +15,13 @@ class Api::V1::RecipesController < ApplicationController
 
   def show
     if recipe
-      render json: recipe
+      data = {
+        name: recipe.name,
+        ingredients: recipe.all_ingredients,
+        instuction: recipe.instruction,
+        image: recipe.image
+      }
+      render json: data
     else
       render json: recipe.errors
     end
@@ -29,7 +35,7 @@ class Api::V1::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.permit(:name, :image, :ingredients, :instruction)
+    params.permit(:name, :image, :instruction)
   end
 
   def recipe
