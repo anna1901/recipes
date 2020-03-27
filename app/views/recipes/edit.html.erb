@@ -7,4 +7,5 @@
 </div>
 <div class="container">
   <%= render 'recipes/form', recipe: @recipe %>
+  <%= link_to  "Delete recipe", recipe_path, method: :delete %>
 </div>
