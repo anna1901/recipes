@@ -16,6 +16,7 @@ class Api::V1::RecipesController < ApplicationController
   def show
     if recipe
       data = {
+        id: recipe.id,
         name: recipe.name,
         ingredients: recipe.all_ingredients,
         instuction: recipe.instruction,
