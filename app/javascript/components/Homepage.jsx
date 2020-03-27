@@ -6,7 +6,7 @@ const Homepage = (props) => {
     return(
       <div>
         <HomepageHeader signed_in={props.signed_in}/>
-        <Recipes />
+        <Recipes signed_in={props.signed_in}/>
       </div>
     );
   }

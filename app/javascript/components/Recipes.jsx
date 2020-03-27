@@ -46,6 +46,12 @@ class Recipes extends React.Component {
       </div>
     );
 
+    const attachCreateRecipeButton = (signed_in) => {
+      if(signed_in) {
+        return <a href="/recipes/new" className="btn custom-button">Create New Recipe</a>
+      }
+    }
+
     return (
       <>
         <section className="jumbotron jumbotron-fluid text-center">
@@ -61,7 +67,7 @@ class Recipes extends React.Component {
         <div className="py-5">
           <main className="container">
             <div className="text-right mb-3">
-              <a href="/recipes/new" className="btn custom-button">Create New Recipe</a>
+              {attachCreateRecipeButton(this.props.signed_in)}
             </div>
             <div className="row">
               {recipes.length > 0 ? allRecipes : noRecipe}
