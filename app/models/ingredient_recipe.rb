@@ -1,4 +1,4 @@
 class IngredientRecipe < ApplicationRecord
-  belongs_to :recipe
-  belongs_to :ingredient
+  belongs_to :recipe, inverse_of: :ingredient_recipes
+  belongs_to :ingredient, inverse_of: :ingredient_recipes
 end
