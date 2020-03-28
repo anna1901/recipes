@@ -7,7 +7,6 @@ class Recipe extends React.Component {
     this.state = { recipe: { ingredients: "" } };
 
     this.addHtmlEntities = this.addHtmlEntities.bind(this);
-    this.deleteRecipe = this.deleteRecipe.bind(this);
   }
 
   componentDidMount() {
@@ -30,27 +29,6 @@ class Recipe extends React.Component {
     return String(str)
       .replace(/&lt;/g, "<")
       .replace(/&gt;/g, ">");
-  }
-
-  deleteRecipe() {
-    const id = this.props.recipe_id;
-    const url = `/api/v1/destroy/${id}`;
-    const token = document.querySelector('meta[name="csrf-token"]').content;
-
-    fetch(url, {
-      method: "DELETE",
-      headers: {
-        "X-CSRF-Token": token,
-        "Content-Type": "application/json"
-      }
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error("Network response was not ok.");
-      })
-      .catch(error => console.log(error.message));
   }
 
   render() {
