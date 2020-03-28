@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import RecipeModal from './RecipeModal'
+import RecipeCard from './RecipeCard/RecipeCard'
 
 class Recipes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       recipes: [],
-      modalOpen: false,
     };
   }
 
@@ -24,29 +23,9 @@ class Recipes extends React.Component {
   }
 
   render() {
-    const closeModal = () => {
-      this.setState({ modalOpen: false });
-    };
-    const openModal = () => {
-      this.setState({ modalOpen: true });
-      console.log(this.state.modalOpen)
-    };
     const { recipes } = this.state;
     const allRecipes = recipes.map((recipe, index) => (
-      <div key={index} className="col-md-6 col-lg-4">
-        <div className="card mb-4">
-          <img
-            src={recipe.image}
-            className="card-img-top"
-            alt={`${recipe.name} image`}
-          />
-          <div className="card-body">
-            <h5 className="card-title">{recipe.name}</h5>
-            <button onClick={openModal} className="btn custom-button">View Recipe</button>
-          </div>
-        </div>
-        <RecipeModal isOpen={this.state.modalOpen} closeModal={closeModal} />
-      </div>
+      <RecipeCard recipe={recipe} key={index} />
     ));
     const noRecipe = (
       <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">

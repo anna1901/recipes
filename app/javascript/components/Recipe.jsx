@@ -57,7 +57,7 @@ class Recipe extends React.Component {
     const { recipe } = this.state;
     let ingredientList = "No ingredients available";
 
-    if (recipe.ingredients.length > 0) {
+    if (recipe.ingredients && recipe.ingredients.length > 0) {
       ingredientList = recipe.ingredients
         .split(",")
         .map((ingredient, index) => (
