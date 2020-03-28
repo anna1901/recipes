@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import RecipeCard from './RecipeCard/RecipeCard'
 
 class Recipes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipes: []
+      recipes: [],
     };
   }
 
@@ -24,19 +25,7 @@ class Recipes extends React.Component {
   render() {
     const { recipes } = this.state;
     const allRecipes = recipes.map((recipe, index) => (
-      <div key={index} className="col-md-6 col-lg-4">
-        <div className="card mb-4">
-          <img
-            src={recipe.image}
-            className="card-img-top"
-            alt={`${recipe.name} image`}
-          />
-          <div className="card-body">
-            <h5 className="card-title">{recipe.name}</h5>
-            <a href={`/recipes/${recipe.id}`} className="btn custom-button">View Recipe</a>
-          </div>
-        </div>
-      </div>
+      <RecipeCard recipe={recipe} key={index} />
     ));
     const noRecipe = (
       <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
