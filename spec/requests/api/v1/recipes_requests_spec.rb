@@ -5,7 +5,22 @@ describe '/api/v1/recipes' do
     it 'repsonds with json containing all recipes' do
       recipe1 = FactoryBot.create(:recipe)
       recipe2 = FactoryBot.create(:recipe)
-      expected_response = [recipe2, recipe1]
+      expected_response = [
+        {
+          id: recipe2.id,
+          name: recipe2.name,
+          ingredients: recipe2.all_ingredients,
+          instruction: recipe2.instruction,
+          image: recipe2.image
+        },
+        {
+          id: recipe1.id,
+          name: recipe1.name,
+          ingredients: recipe1.all_ingredients,
+          instruction: recipe1.instruction,
+          image: recipe1.image
+        }
+      ]
       get api_v1_recipes_index_path
       expect(response.body).to eq(expected_response.to_json)
     end

@@ -1,7 +1,11 @@
 class Api::V1::RecipesController < ApplicationController
   def index
     recipes = Recipe.all.order(created_at: :desc)
-    render json: recipes
+
+    data = recipes.map do |recipe|
+      recipe_presenter.call(recipe)
+    end
+    render json: data
   end
 
   def create
@@ -15,13 +19,7 @@ class Api::V1::RecipesController < ApplicationController
 
   def show
     if recipe
-      data = {
-        id: recipe.id,
-        name: recipe.name,
-        ingredients: recipe.all_ingredients,
-        instruction: recipe.instruction,
-        image: recipe.image
-      }
+      data = recipe_presenter.call(recipe)
       render json: data
     else
       render json: recipe.errors
@@ -37,6 +35,10 @@ class Api::V1::RecipesController < ApplicationController
 
   def recipe_params
     params.permit(:name, :image, :instruction)
+  end
+
+  def recipe_presenter
+    RecipePresenter.new
   end
 
   def recipe
