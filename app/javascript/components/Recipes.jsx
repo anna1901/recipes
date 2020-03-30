@@ -50,7 +50,7 @@ class Recipes extends React.Component {
     if(this.props.user_id) {
       heading =
           <div>
-            <h1 className="display-4">Here is a list of all your recipes</h1>
+            <h1 className="display-4">Your recipes</h1>
           </div>
     } else {
       heading =

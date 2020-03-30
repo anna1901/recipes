@@ -5,9 +5,6 @@ class RecipesController < ApplicationController
   def index
   end
 
-  def user_recipes
-  end
-
   def new
     @recipe = current_user.recipes.build
   end
@@ -24,6 +21,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe_id = params[:id]
+    @owner = Recipe.find(@recipe_id).user_id == current_user.id
   end
 
   def edit
