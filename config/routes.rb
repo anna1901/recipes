@@ -8,11 +8,8 @@ Rails.application.routes.draw do
       delete '/destroy/:id', to: 'recipes#destroy'
     end
   end
-  resources :recipes do
-    collection do
-      get :user_recipes, as: :user
-    end
-  end
+  resources :recipes
+
   root 'homepage#index'
   get '/*path' => 'homepage#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
