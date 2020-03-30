@@ -1,13 +1,16 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def index
   end
 
   def new
-    @recipe = Recipe.new
+    @recipe = current_user.recipes.build
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
       flash[:success] = 'Recipe successfully created'
       redirect_to @recipe
@@ -18,14 +21,13 @@ class RecipesController < ApplicationController
 
   def show
     @recipe_id = params[:id]
+    @owner = Recipe.find(@recipe_id).user_id == current_user.id
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       flash[:success] = 'Recipe updated successfully'
       redirect_to @recipe
@@ -45,5 +47,14 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:name, :ingredients, :instruction, :all_ingredients)
+  end
+
+  def correct_user
+    if current_user.try(:admin?)
+      @recipe = Recipe.find_by(id: params[:id])
+    else
+      @recipe = current_user.recipes.find_by(id: params[:id])
+      redirect_to recipes_path, alert: "You are not allowed to edit this recipe" if @recipe.nil?
+    end
   end
 end

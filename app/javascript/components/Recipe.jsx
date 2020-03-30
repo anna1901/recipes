@@ -47,7 +47,7 @@ class Recipe extends React.Component {
     const recipeInstruction = this.addHtmlEntities(recipe.instruction);
 
     const attachEditButton = () => {
-      if(this.props.signed_in) {
+      if(this.props.owner) {
         return(
           <a href={`${recipe.id}/edit`} className="btn btn-info" method="patch">Edytuj</a>
         )

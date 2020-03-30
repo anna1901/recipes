@@ -5,6 +5,7 @@ class Recipe < ApplicationRecord
 
   has_many :ingredient_recipes, dependent: :destroy, inverse_of: :recipe
   has_many :ingredients, through: :ingredient_recipes
+  belongs_to :user
 
   def all_ingredients=(names)
     self.ingredients = names.split(",").map do |name|
