@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
     <ul class="navbar-nav">
       <% if user_signed_in? %>
-        <%= link_to "My recipes", recipes_path, class: 'nav-item nav-link' %>
+        <%= link_to "My recipes", user_recipes_path, class: 'nav-item nav-link' %>
         <%= link_to "All recipes", recipes_path, class: 'nav-item nav-link' %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
