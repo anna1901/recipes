@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe_id = params[:id]
-    @owner = Recipe.find(@recipe_id).user_id == current_user.id
+    @owner = current_user ? Recipe.find(@recipe_id).user_id == current_user.id : nil
   end
 
   def edit
