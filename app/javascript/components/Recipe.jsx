@@ -87,7 +87,7 @@ class Recipe extends React.Component {
               { attachEditButton() }
             </div>
           </div>
-          <a href="/recipes">Back to recipes</a>
+          <a href="/">Back to homepage</a>
         </div>
       </div>
     );
