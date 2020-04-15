@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
+    @user_id = current_user ? current_user.id : nil
   end
 
   def new
