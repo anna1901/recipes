@@ -2,9 +2,12 @@ require 'rails_helper'
 
 describe '/api/v1/recipes' do
   describe 'GET /index' do
+    let(:admin) { FactoryBot.create(:user, admin: true) }
+
     it 'repsonds with json containing all recipes' do
-      recipe1 = FactoryBot.create(:recipe)
-      recipe2 = FactoryBot.create(:recipe)
+      recipe1 = FactoryBot.create(:recipe, user: admin)
+      recipe2 = FactoryBot.create(:recipe, user: admin)
+
       expected_response = [
         {
           id: recipe2.id,
