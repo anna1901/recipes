@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'Login page: Login with invalid email or password' do
   background do
     visit new_user_session_path
+    FactoryBot.create(:user, admin: true)
   end
 
   scenario 'Show invalid email or password error to user' do
@@ -17,6 +18,7 @@ end
 feature 'Login page: valid credentials' do
   background do
     visit new_user_session_path
+    FactoryBot.create(:user, admin: true)
   end
 
   context 'Log in as user' do
